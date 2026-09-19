@@ -1,0 +1,47 @@
+[
+  {
+    "model_name": "XGBoost Regressor",
+    "mae": 2018810.83,
+    "mse": 18949862952784.99,
+    "rmse": 4353144.03,
+    "r2_score": 0.9035,
+    "train_r2_score": 0.9916,
+    "mape_percent": 10.57
+  },
+  {
+    "model_name": "Gradient Boosting Regressor",
+    "mae": 1937158.54,
+    "mse": 19040393271932.75,
+    "rmse": 4363529.91,
+    "r2_score": 0.9031,
+    "train_r2_score": 0.995,
+    "mape_percent": 9.69
+  },
+  {
+    "model_name": "Random Forest Regressor",
+    "mae": 2694339.61,
+    "mse": 27211969133890.91,
+    "rmse": 5216509.29,
+    "r2_score": 0.8615,
+    "train_r2_score": 0.9777,
+    "mape_percent": 16.06
+  },
+  {
+    "model_name": "Linear Regression",
+    "mae": 2685458.42,
+    "mse": 27371509639589.3,
+    "rmse": 5231778.82,
+    "r2_score": 0.8607,
+    "train_r2_score": 0.8616,
+    "mape_percent": 20.83
+  },
+  {
+    "model_name": "Decision Tree Regressor",
+    "mae": 3866019.77,
+    "mse": 47858846605178.52,
+    "rmse": 6918008.86,
+    "r2_score": 0.7563,
+    "train_r2_score": 0.9512,
+    "mape_percent": 23.21
+  }
+]
