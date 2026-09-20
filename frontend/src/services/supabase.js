@@ -1,17 +1,28 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const rawUrl = (import.meta.env.VITE_SUPABASE_URL || '').trim();
+const rawKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
 
 export const isSupabaseConfigured = () => {
-  return Boolean(
-    supabaseUrl && 
-    supabaseAnonKey && 
-    supabaseUrl !== 'https://your-supabase-project.supabase.co' &&
-    !supabaseUrl.includes('placeholder')
-  );
+  if (!rawUrl || !rawKey) return false;
+  if (rawUrl === 'https://your-supabase-project.supabase.co' || rawUrl.includes('placeholder')) return false;
+  try {
+    const parsed = new URL(rawUrl);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
 };
 
-export const supabase = isSupabaseConfigured()
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+let client = null;
+if (isSupabaseConfigured()) {
+  try {
+    client = createClient(rawUrl, rawKey);
+  } catch (error) {
+    console.warn('Failed to initialize Supabase client:', error);
+    client = null;
+  }
+}
+
+export const supabase = client;
+export default supabase;
